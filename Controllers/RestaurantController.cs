@@ -60,7 +60,7 @@ public class RestaurantController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateRestaurant([FromBody] RestaurantEdit request)
+    public async Task<IActionResult> CreateRestaurant([FromForm] RestaurantEdit request)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
         if (_context.Restaurants == null) return NoContent();
@@ -76,7 +76,7 @@ public class RestaurantController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> UpdateRestaurant(int id, [FromBody] RestaurantEdit request)
+    public async Task<IActionResult> UpdateRestaurant(int id, [FromForm] RestaurantEdit request)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
         if (_context.Restaurants == null) return NoContent();
